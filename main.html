@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Book Shop</title>
+</head>
+<body onload="init()">
+    <h1 class="store-title">Welcome to Amir Books Store!</h1>
+ 
+
+    <div class="modal" hidden>
+        <p class="modal-title"></p>
+        <img class="modal-img"></img>
+        <p class="modal-details"></p>
+        <button class="close-modal" onclick="onCloseModal()">Close</button>
+    </div>
+    <div class="modal-priceupdate-container" hidden>
+        <div class="modal-priceupdate">
+            <div class="close-update-modal" onclick="onCloseUpdateModal()">❌</div>
+            <img class="update-model-image" src="#">
+            <label for="id">ID:</label>
+            <input type="number" name="book-id" id="edit-id" readonly>
+            <label for="name">Book Name:</label>
+            <input type="text" name="book-name" id="edit-name">
+            <label for="price">Price:</label>
+            <input type="number" name="book-price" id="edit-price">
+            <label for="rate">Book Rate:</label>
+            <input type="number" name="book-rate" id="edit-rate">
+            <button class="confirm-btn" onclick="onConfirmUpdate()">Confirm</button>
+            
+        </div>
+    </div>
+    <div class="new-page-icon">
+        <img class="scale-btn" src="/img/newpage.png" onclick="onOpenNewPageModal()">
+        <img class="scale-btn" src="/img/icons-gallery.png"  onclick="onChangeView('gallery')">
+        <img class="scale-btn" src="/img/icons-table.png"  onclick="onChangeView('table')">
+        
+    </div>
+
+    <div class="newpage-modal-container" hidden>
+        <div class="newpage-modal">
+            <div class="close-newbook-modal" onclick="onCloseAddNewBookModal()">❌</div>
+            <label class="image-upload-label">Click below to upload image</label>
+            <input type="file" name="image" class="upload-image" id="file"  onchange="onLoadFile(event)" style="display: block;">
+            <img class="newpage-model-image" src="#">
+            <label for="id">ID:</label>
+            <input type="number" name="book-id" id="add-id" readonly>
+        <label for="name">Book Name:</label>
+        <input type="text" name="book-name" id="add-name">
+        <label for="price">Price:</label>
+        <input type="number" name="book-price" id="add-price">
+        <label for="rate">Book Rate:</label>
+        <input type="number" name="book-rate" id="add-rate">
+        <button class="confirm-btn" onclick="onAddBook()">Confirm</button>
+        </div>
+    </div>
+    <button onclick="onNextPage(false)" class="prev-page"><<</button>
+    <button onclick="onNextPage(true)" class="next-page">>></button>
+    <div class="books-table"></div>
+    <div class="books-gallery"></div>
+    <script src="/services/util.service.js"></script>
+    <script src="/services/storage.service.js"></script>
+    <script src="/services/book.service.js"></script>
+    <script src="book-controller.js"></script>
+</body>
+</html>
